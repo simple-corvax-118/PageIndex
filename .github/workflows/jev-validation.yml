@@ -26,7 +26,14 @@ jobs:
           python-version: '3.10'
           cache: pip
       - run: pip install -r requirements.txt pytest
-      - run: python -m pytest -q
+      - run: pip download --no-deps PyPDF2==3.0.1 -d /tmp/validation
+      - run: python -m pytest -q --junitxml=/tmp/validation/tests.xml
         env:
           PAGEINDEX_API_KEY: ''
           TYPESAFE_API_KEY: ''
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validation
+          path: /tmp/validation
+          retention-days: 1
