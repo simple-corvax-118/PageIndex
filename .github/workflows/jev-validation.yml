@@ -1,0 +1,32 @@
+name: JEV retrieval validation
+
+on:
+  push:
+    branches: [feat/jev-node-retrieval]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+      - name: Archive tracked source for reproducible validation
+        run: git archive --format=zip HEAD -o /tmp/pageindex-source.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pageindex-source
+          path: /tmp/pageindex-source.zip
+          retention-days: 1
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.10'
+          cache: pip
+      - run: pip install -r requirements.txt pytest
+      - run: python -m pytest -q
+        env:
+          PAGEINDEX_API_KEY: ''
+          TYPESAFE_API_KEY: ''
