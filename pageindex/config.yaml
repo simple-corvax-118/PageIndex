@@ -13,3 +13,12 @@ if_add_node_id: "yes"
 if_add_node_summary: "yes"
 if_add_doc_description: "no"
 if_add_node_text: "no"
+# JEV tree-node selection only; indexing/chat model settings above are unchanged.
+# Endpoint/model from docs.typesafe.ai/api. Threshold/batching/timeouts are
+# application tuning defaults, not provider limits or calibrated cut-offs.
+jev_model: "jev-latest"
+jev_endpoint: "https://api.typesafe.ai/v1/systemone"
+jev_retrieval_threshold: 0.5
+jev_batch_size: 32
+jev_timeout: 30
+jev_max_retries: 2

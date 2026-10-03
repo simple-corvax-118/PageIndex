@@ -7,3 +7,6 @@ logs/
 .pageindex/
 dist/
 /results/
+
+# Keep the credential template, but ignore actual secrets.
+!.env.example

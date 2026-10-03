@@ -1,0 +1,50 @@
+{
+  "source": {
+    "drive_path": "ai_sharefolder/mba_course/903_digital_innovation/MGTM03_Digital_Enterprise_and_Innovation_Teacher_Preparation_Guide.md",
+    "sha256": "2138396663a47292a6c40c2951d69925e5f1abcf389e3702417b0d7687c5bcaa",
+    "size_bytes": 72437,
+    "note": "Private source is not distributed. Download the original Markdown from the user's Drive; do not reformat it."
+  },
+  "cases": [
+    {
+      "id": "digital_twins",
+      "query": "What is a digital twin, and how does it connect a physical asset with operational data?",
+      "expected_any_sections": ["5.8 Digital Twins"]
+    },
+    {
+      "id": "design_vs_agile",
+      "query": "How should a teacher explain the distinction between design thinking and agile?",
+      "expected_any_sections": ["8.6 Design thinking vs agile", "5.5 Design Thinking", "5.6 Agile and Iterative Delivery"]
+    },
+    {
+      "id": "sustainability",
+      "query": "How do the triple bottom line and circular-economy strategies relate to sustainable digital practice?",
+      "expected_any_sections": ["5.9 Corporate Social Responsibility and Sustainable Digital Practice", "5.11 Circular Economy"]
+    },
+    {
+      "id": "three_s_three_a",
+      "query": "What is the difference between Hau Lee's 3S innovation logic and the digital supply-chain 3A logic?",
+      "expected_any_sections": ["8.10 3S vs 3A", "5.20 Hau Lee's 3S Innovation Logic", "5.21 Hau Lee / Digital Supply-Chain 3A Logic"]
+    },
+    {
+      "id": "assessment",
+      "query": "What is the final assessment format, and what requirements apply when choosing the organization to analyse?",
+      "expected_any_sections": ["9.1 Final assessment", "9.2 Organization-selection requirements", "9.7 Video format and submission"]
+    },
+    {
+      "id": "industry_chinese",
+      "query": "比較工業4.0與工業5.0在人的角色與可持續性方面的差異。",
+      "expected_any_sections": ["8.13 Industry 4.0 vs Industry 5.0", "5.27 Industry 4.0", "5.28 Industry 5.0"]
+    },
+    {
+      "id": "negative_lunar_serial",
+      "query": "What was the engine serial number of the Apollo 11 lunar module ascent engine?",
+      "expect_empty": true
+    },
+    {
+      "id": "negative_recipe",
+      "query": "What exact gram quantities of butter and flour does this document specify for a croissant recipe?",
+      "expect_empty": true
+    }
+  ]
+}

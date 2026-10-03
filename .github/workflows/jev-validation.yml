@@ -14,26 +14,23 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
-      - name: Archive tracked source for reproducible validation
-        run: git archive --format=zip HEAD -o /tmp/pageindex-source.zip
-      - uses: actions/upload-artifact@v4
-        with:
-          name: pageindex-source
-          path: /tmp/pageindex-source.zip
-          retention-days: 1
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
           python-version: '3.10'
           cache: pip
       - run: pip install -r requirements.txt pytest
-      - run: pip download --no-deps PyPDF2==3.0.1 -d /tmp/validation
-      - run: python -m pytest -q --junitxml=/tmp/validation/tests.xml
+      - name: Focused JEV and handoff tests (mocked, no paid requests)
+        run: python -m pytest -q tests/test_jev_retrieval.py tests/test_jev_teacher_guide.py --junitxml=/tmp/validation/jev.xml
+        env:
+          TYPESAFE_API_KEY: ''
+      - name: Existing suite plus JEV regressions
+        run: python -m pytest -q --junitxml=/tmp/validation/all.xml
         env:
           PAGEINDEX_API_KEY: ''
           TYPESAFE_API_KEY: ''
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: validation
-          path: /tmp/validation
-          retention-days: 1
+          name: test-reports
+          path: /tmp/validation/*.xml
+          retention-days: 7
